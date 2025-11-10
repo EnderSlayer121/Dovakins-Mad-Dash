@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbxecyv8s2ed8"]
+
+[ext_resource type="Script" uid="uid://bo3y66ny7mf1o" path="res://enemies/enemy.gd" id="1_7frlh"]
+[ext_resource type="Texture2D" uid="uid://bidqyhojl8smx" path="res://assets/enemy.png" id="2_7frlh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7frlh"]
+size = Vector2(9, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orwns"]
+size = Vector2(9, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6vjd"]
+size = Vector2(11, 19)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy", "enemies"]]
+position = Vector2(2, -9)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_7frlh")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_7frlh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_7frlh")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-7, 0)
+target_position = Vector2(0, 12)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(-8, -4)
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-1.5, -9.5)
+shape = SubResource("RectangleShape2D_orwns")
+debug_color = Color(0.95353204, 0.18371597, 0.30403778, 0.41960785)
+
+[node name="Attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_a6vjd")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]

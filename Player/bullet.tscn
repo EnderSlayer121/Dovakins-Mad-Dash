@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6nwk8mhnhb4w"]
+
+[ext_resource type="Texture2D" uid="uid://dv1b5xqm7b5fn" path="res://assets/bullet.png" id="1_kxw81"]
+[ext_resource type="Script" uid="uid://doa6w3rsqet72" path="res://Player/bullet.gd" id="1_tqmay"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqmay"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d7yj7"]
+radius = 2.0
+
+[node name="Bullet" type="Area2D" groups=["Bullet"]]
+scale = Vector2(5, 5)
+script = ExtResource("1_tqmay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.5762787e-07, -1.1920929e-07)
+scale = Vector2(0.01149635, 0.0073784725)
+texture = ExtResource("1_kxw81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tqmay")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_d7yj7")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

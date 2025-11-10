@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc6ocjq16x04y"]
+
+[ext_resource type="Script" uid="uid://b3igrfh2sepdk" path="res://Player/mask.gd" id="1_c1l40"]
+[ext_resource type="Texture2D" uid="uid://6lhoreio8wnf" path="res://assets/maskitem-removebg-preview.png" id="2_16w8d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1l40"]
+size = Vector2(188.30766, 201.20575)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16w8d"]
+size = Vector2(12, 12)
+
+[node name="Mask" type="CharacterBody2D"]
+collision_layer = 32
+script = ExtResource("1_c1l40")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.9999962, 4)
+scale = Vector2(0.0637255, 0.05964045)
+texture = ExtResource("2_16w8d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 3.5)
+scale = Vector2(0.0637255, 0.05964045)
+shape = SubResource("RectangleShape2D_c1l40")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 3.5)
+shape = SubResource("RectangleShape2D_16w8d")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

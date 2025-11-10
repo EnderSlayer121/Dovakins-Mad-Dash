@@ -1,0 +1,16 @@
+extends StaticBody2D
+
+
+func _on_area_2d_area_entered(_area: Area2D) -> void:
+	$CollisionShape2D.call_deferred("set", "disabled", true)
+	$Area2D/CollisionShape2D.call_deferred("set", "disabled", true)
+	$Sprite2D.visible = false
+	spawn()
+
+
+func spawn():
+	match GameState.current_state:
+		GameState.PlayerState.BASE:
+			GameState.spawn_mask(self.global_position + Vector2(0, -20))
+		GameState.PlayerState.MASKED, GameState.PlayerState.SWORDED:
+			GameState.spawn_sword(self.global_position + Vector2(0, -30))

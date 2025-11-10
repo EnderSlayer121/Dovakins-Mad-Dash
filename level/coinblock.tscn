@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://qdxgv0l4uv8f"]
+
+[ext_resource type="PackedScene" uid="uid://51gyvoho6xdp" path="res://level/used_block.tscn" id="1_kpf1y"]
+[ext_resource type="Script" uid="uid://bnhiw5p7ryrq5" path="res://level/coinblock.gd" id="2_71okg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_71okg"]
+font_size = 12
+
+[node name="StaticBody2D" instance=ExtResource("1_kpf1y")]
+script = ExtResource("2_71okg")
+
+[node name="Label" type="Label" parent="." index="2"]
+offset_left = -8.0
+offset_top = -23.0
+offset_right = 32.0
+label_settings = SubResource("LabelSettings_71okg")
+
+[node name="Timer" type="Timer" parent="." index="4"]
+wait_time = 0.59
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

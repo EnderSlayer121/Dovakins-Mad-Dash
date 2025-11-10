@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://xvup6dffjdal"]
+
+[ext_resource type="PackedScene" uid="uid://51gyvoho6xdp" path="res://level/used_block.tscn" id="1_ayg2c"]
+[ext_resource type="Script" uid="uid://dmpce8y64an2y" path="res://level/powerblock_2.gd" id="2_5fjh0"]
+
+[node name="StaticBody2D" instance=ExtResource("1_ayg2c")]
+script = ExtResource("2_5fjh0")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-0.5, 7)

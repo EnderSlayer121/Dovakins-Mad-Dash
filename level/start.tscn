@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5opcj7qne6sf"]
+
+[ext_resource type="Script" uid="uid://dvxfn0yqkh4qr" path="res://start.gd" id="1_bnhav"]
+
+[node name="Start" type="CanvasLayer"]
+script = ExtResource("1_bnhav")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 81.0
+offset_right = 1147.0
+offset_bottom = 156.0
+text = "Dovakin & His Party return to a nearby town's Inn for the night after a long day of battling Vampires. As the party goes to pay for their rooms, 
+they realize they don't have enough gold! Dovakin, being the party leader, is tasked to venture back outside and collect enough gold to handle the 
+bill, while being careful of all the vampires that still lurk about..."
+
+[node name="Start" type="Button" parent="."]
+offset_left = 177.0
+offset_top = 213.0
+offset_right = 422.0
+offset_bottom = 286.0
+text = "Start"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 652.0
+offset_top = 213.0
+offset_right = 913.0
+offset_bottom = 286.0
+text = "Quit"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

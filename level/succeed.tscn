@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://jkyyi31rcuwm"]
+
+[ext_resource type="Script" uid="uid://dvxfn0yqkh4qr" path="res://start.gd" id="1_l0awv"]
+
+[node name="Succeed" type="CanvasLayer"]
+script = ExtResource("1_l0awv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 81.0
+offset_right = 1147.0
+offset_bottom = 156.0
+text = "Dovakin was successful in obtaining the required gold the party required to get their rooms for the night! Now they are able to sleep peacefully and 
+regain their energy for their future fights to keep the vampires at bay."
+
+[node name="Start" type="Button" parent="."]
+offset_left = 177.0
+offset_top = 213.0
+offset_right = 422.0
+offset_bottom = 286.0
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 652.0
+offset_top = 213.0
+offset_right = 913.0
+offset_bottom = 286.0
+text = "Quit"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

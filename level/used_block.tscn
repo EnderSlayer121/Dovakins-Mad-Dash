@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://51gyvoho6xdp"]
+
+[ext_resource type="PackedScene" uid="uid://kbes2qp7yrn3" path="res://level/itemblock.tscn" id="1_6ebu5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ebu5"]
+size = Vector2(17, 2)
+
+[node name="StaticBody2D" instance=ExtResource("1_6ebu5")]
+
+[node name="Sprite2D" parent="." index="1"]
+hframes = 19
+frame = 6
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-1, 7)
+shape = SubResource("RectangleShape2D_6ebu5")
+debug_color = Color(0.8651132, 0.25426182, 0.6341614, 0.41960785)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
